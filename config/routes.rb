@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'logout' => 'sessions#destroy', as: :logout
-  get 'login' => 'sessions#new', as: :login
-  get 'signup' => 'users#new', as: :signup
+  delete  'logout'  => 'sessions#destroy'
+  get     'login'   => 'sessions#new'
+  post    'login'   => 'sessions#create'
+  get     'signup'  => 'users#new'
+  post    'signup'  => 'users#create'
 
-  resources :users
-  resources :sessions
   resources :products
+
   root 'products#index'
 
   # Example of regular route:

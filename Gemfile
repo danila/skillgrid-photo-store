@@ -14,9 +14,8 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'puma'
 gem 'sorcery'
-gem 'country_select'
+gem 'quiet_assets'
 
 group :test do
 	gem 'minitest-reporters'
