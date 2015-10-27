@@ -1,0 +1,36 @@
+/* typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+label {
+  margin-top: 5px;
+  margin-bottom: 0px !important;
+}
+
+.check-remember {
+  margin-left: 5px !important;
+  width: auto;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+.new-user {
+  margin-top: 10px;
+}
