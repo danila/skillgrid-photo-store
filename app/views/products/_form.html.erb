@@ -1,33 +1,22 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@product) do |f| %>
+        <%= render 'shared/error_messages' %>
 
-      <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: 'form-control' %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+        <%= f.label :description %><br>
+        <%= f.text_field :description, class: 'form-control' %>
+
+        <%= f.label :price %><br>
+        <%= f.text_field :price, class: 'form-control' %>
+
+        <%= f.label :image %><br>
+        <%= f.file_field :image %>
+
+        <%= f.submit "Create product", class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+
