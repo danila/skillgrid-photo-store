@@ -15,10 +15,11 @@ gem 'autoprefixer-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'puma'
-gem 'devise'
+gem 'sorcery'
 gem 'country_select'
 
 group :test do
+	gem 'minitest-reporters'
 	gem 'minitest-rails'
 	gem 'factory_girl_rails'
 end
@@ -28,7 +29,7 @@ group :development do
   gem 'spring'
 end
 
-group :development, :test do 
+group :development, :test do
 	gem 'byebug'
 	gem 'pry-rails'
 end
