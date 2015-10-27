@@ -1,2 +1,11 @@
-# skillgrid-photo-store
+dnlrmkv photo store
+============
 Simple online store application for Skillgrid Internship
+
+## Installation
+1. Clone the repo: `git clone https://github.com/danila/skillgrid-photo-store.git`
+2. Change directory `cd skillgrid-photo-store`
+3. Install gems: `bundle install`
+4. Run DB migration: `rake db:migrate`
+5. Run the app: `rails s`
+6. Open page in browser: `http://localhost:3000/`
