@@ -5,3 +5,82 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Product.delete_all
+
+Product.create(name: 'Train platform',
+                description: 'Kraskovo platform, Kazan direction',
+                price: 15).tap do |p|
+
+  p.image = Rails.root.join("app/assets/images/0.jpg").open
+  p.save!
+end
+
+
+Product.create(name: 'White bridge',
+                description: 'Kraskovo village, Moscow region',
+                price:10).tap do |p|
+
+  p.image = Rails.root.join("app/assets/images/1.jpg").open
+  p.save!
+end
+
+Product.create(name: 'Street',
+                description: 'Kraskovo village, Moscow region',
+                price: 15).tap do |p|
+
+  p.image = Rails.root.join("app/assets/images/2.jpg").open
+  p.save!
+end
+
+Product.create(name: 'Diod girl',
+                description: 'Muzeon park, Moscow',
+                price: 10).tap do |p|
+
+  p.image = Rails.root.join("app/assets/images/3.jpg").open
+  p.save!
+end
+
+
+Product.create(name: 'Rest',
+                description: 'Plaça de l\'Ictineo, Barcelona',
+                price: 15).tap do |p|
+
+  p.image = Rails.root.join("app/assets/images/4.jpg").open
+  p.save!
+end
+
+
+Product.create(name: 'Take a look',
+                description: 'Zhukovskiy, Moscow region',
+                price: 5).tap do |p|
+
+  p.image = Rails.root.join("app/assets/images/5.jpg").open
+  p.save!
+end
+
+
+Product.create(name: 'Traffic',
+                description: 'Zhukovskiy, Moscow region',
+                price: 10).tap do |p|
+
+  p.image = Rails.root.join("app/assets/images/6.jpg").open
+  p.save!
+end
+
+Product.create(name: 'Icicles',
+                description: 'Apothecary Garden, Moscow',
+                price: 10).tap do |p|
+
+  p.image = Rails.root.join("app/assets/images/7.jpg").open
+  p.save!
+end
+
+
+Product.create(name: 'The Last of the Mohicans',
+                description: 'Apothecary Garden, Moscow',
+                price: 5).tap do |p|
+
+  p.image = Rails.root.join("app/assets/images/8.jpg").open
+  p.save!
+end
+
