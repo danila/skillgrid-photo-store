@@ -12,30 +12,33 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    File.open(product_params[:image]) do |f|
+      @product.image = f
+    end
+
+    if @product.save
+      flash[:success] = 'Product was successfully created'
+      redirect_to @product
+    else
+      flash[:danger] = 'Invalid form input'
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @product.update(product_params)
+      flash[:success] = 'Product was successfully updated'
+      redirect_to @product
+    else
+      flash[:danger] = 'Invalid form input'
+      render :edit
     end
   end
 
   def destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-    end
+    flash[:success] = 'Product was successfully destroyed'
+    redirect_to products_url
   end
 
   private

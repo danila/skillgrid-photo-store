@@ -9,6 +9,14 @@ h1 {
   text-align: center;
 }
 
+.product-title {
+  color: #222;
+}
+
+.product-title:hover {
+  color: #555;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -33,4 +41,34 @@ label {
 
 .new-user {
   margin-top: 10px;
+}
+
+/* footer */
+.footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+.footer a {
+  color: #555;
+}
+
+.footer a:hover {
+  color: #222;
+}
+
+.footer small {
+  float: left;
+}
+
+.footer ul {
+  float: right;
+  list-style: none;
+}
+
+.footer ul li {
+  float: left;
+  margin-left: 15px;
 }
