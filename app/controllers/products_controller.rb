@@ -11,10 +11,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
-    File.open(product_params[:image]) do |f|
-      @product.image = f
-    end
+    @product.user_id = current_user.id if current_user
 
     if @product.save
       flash[:success] = 'Product was successfully created'
@@ -47,6 +44,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :image)
+      params.require(:product).permit(:name, :description, :price, :image, :user_id)
     end
 end
