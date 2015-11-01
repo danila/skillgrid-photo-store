@@ -19,7 +19,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
           	<% if current_user %>
-          		<li class="navbar-text"> logged in as <%= current_user.email %></li>
+          		<li class="navbar-text logged-text">
+                logged in as <%= current_user.email %>
+              </li>
+              <li class="userpic">
+                <%= image_tag(current_user.userpic.thumb) %>
+              </li>
           		<li> <%= link_to "log out", logout_path, method: :delete %></li>
           	<% else %>
           		<li> <%= link_to "sign up", signup_path %></li>

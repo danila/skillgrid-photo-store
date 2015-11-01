@@ -38,3 +38,4 @@ bower.json
 
 # Ctag gem tags-file
 .gemtags
+.tag*

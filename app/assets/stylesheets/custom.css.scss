@@ -43,6 +43,21 @@ label {
   margin-top: 10px;
 }
 
+/* header */
+
+.header {
+  .navbar-right {
+
+    .logged-text {
+      margin-right: 7px;
+    }
+
+    .userpic {
+      margin-top: 12px;
+    }
+  }
+}
+
 /* footer */
 .footer {
   margin-top: 45px;
@@ -71,4 +86,25 @@ label {
 .footer ul li {
   float: left;
   margin-left: 15px;
+}
+
+/* signup */
+
+.signup-container {
+  ul li a {
+    color: #222;
+  }
+
+  ul li a {
+    color: #555;
+  }
+
+  h1 {
+    margin-left: 35px;
+  }
+
+  .tab-content {
+    margin-top: 20px;
+    margin-left: 35px;
+  }
 }
