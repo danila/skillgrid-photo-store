@@ -4,17 +4,20 @@
 
   <h1>Sign up</h1>
 
-  <ul class="nav nav-tabs nav-justified">
-    <li>
-      <a href="#1" data-toggle="tab"><h4>Shopkeeper</h4></a>
-    </li>
-    <li class="active">
-      <a href="#2" data-toggle="tab"><h4>Guest</h4></a>
-    </li>
-    <li>
-      <a href="#3" data-toggle="tab"><h4>Admin</h4></a>
-    </li>
-  </ul>
+  <div id="forms-tabs">
+    <ul class="nav nav-tabs nav-justified">
+      <li>
+        <a href="#1" data-toggle="tab"><h4>Shopkeeper</h4></a>
+      </li>
+      <li class="active">
+        <a href="#2" data-toggle="tab"><h4>Guest</h4></a>
+      </li>
+      <li>
+        <a href="#3" data-toggle="tab"><h4>Admin</h4></a>
+      </li>
+    </ul>
+  </div>
+  <%= javascript_include_tag( 'tabs.js' ) %>
 
   <div class="tab-content ">
     <div class="tab-pane" id="1">
