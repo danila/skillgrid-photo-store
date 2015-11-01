@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for @user, url: signup_path do |f| %>
-      <%= render 'shared/error_messages', resource: @user %>
+    <%= form_for @user, html: {id: 'new_shopkeeper'},
+        url: signup_path, method: :post do |f| %>
+      <%= render 'shared/error_messages', resources: [@user, @signup_form] %>
 
       <%= f.label :shopname %>
       <%= f.text_field :shopname, class: 'form-control' %>
@@ -18,6 +19,7 @@
       <%= f.label :userpic %>
       <%= f.file_field :userpic, class: 'form-control' %>
 
+      <%= f.hidden_field :role, value: 'shopkeeper' %>
       <%= f.submit "Create my account", class: "btn btn-default" %>
     <% end %>
   </div>

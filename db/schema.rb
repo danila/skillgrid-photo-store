@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 20151101172114) do
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string   "role"
-    t.string   "name"
+    t.string   "firstname"
     t.string   "surname"
     t.string   "userpic"
     t.string   "passport"
-    t.datetime "birthday"
+    t.date     "birthday"
     t.string   "shopname"
   end
 

@@ -6,8 +6,8 @@ class SignupFormFinder
   end
 
   def form
-    return GuestSignupForm.new(params)
-    case params[:type]
+    case params[:user][:role]
+      when "shopkeeper" then ShopkeeperSignupForm.new(params)
       when "guest" then GuestSignupForm.new(params)
       when "admin" then AdminSignupForm.new(params)
     end

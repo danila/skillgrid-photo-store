@@ -3,7 +3,7 @@ class GuestSignupForm
 
   validates :password, length: { minimum: 6 }
 
-  delegate :email, :password, to: :user
+  delegate :email, :password, :role, to: :user
 
   attr_reader :params
   attr_accessor :user
@@ -14,7 +14,7 @@ class GuestSignupForm
   end
 
   def submit
-    if @user.save
+    if valid? && @user.save
       @user
     else
       false
@@ -23,6 +23,7 @@ class GuestSignupForm
 
   private
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password,
+                                   :password_confirmation, :role)
     end
 end
