@@ -14,8 +14,8 @@ class GuestSignupForm
   end
 
   def submit
-    if valid?
-      @user.save!
+    if @user.save
+      @user
     else
       false
     end
