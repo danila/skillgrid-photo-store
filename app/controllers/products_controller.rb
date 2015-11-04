@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    authorize @product
     @product.user_id = current_user.id if current_user
 
     if @product.save

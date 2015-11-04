@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       flash[:success] = "You have been successfully signed up"
   		redirect_to root_url
   	else
-      flash[:danger] = "Something went wrong"
       render :new
   	end
   end

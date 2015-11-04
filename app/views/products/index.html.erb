@@ -14,7 +14,12 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= link_to product.name, product, class: "product-title"%></td>
+        <td>
+          <%= link_to product.name, product, class: "product-title"%>
+          <% if product.pro %>
+            <h6><span class="label label-default label-pro">PRO</span></h6>
+          <% end %>
+        </td>
         <td><%= product.description %></td>
         <td><%= number_to_currency product.price %></td>
         <td><%= link_to image_tag(product.image.thumb), product %></td>
@@ -25,6 +30,6 @@
 
 <br>
 
-<% if current_user %>
+<% if current_user && current_user.shopkeeper? %>
   <%= link_to 'New Product', new_product_path, class: "btn btn-default"  %>
 <% end %>

@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
 User.create(email: 'dnlrmkv@gmail.com', password: 'qweqwe',
-            password_confirmation: 'qweqwe')
+            password_confirmation: 'qweqwe', shopname: 'SUPERTELESHOP')
 
 
 Product.delete_all

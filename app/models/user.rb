@@ -15,4 +15,12 @@ class User < ActiveRecord::Base
   def admin?
     role == "admin"
   end
+
+  def shopkeeper?
+    role == "shopkeeper"
+  end
+
+  def guest?
+    role == "guest"
+  end
 end

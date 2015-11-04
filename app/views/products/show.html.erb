@@ -1,24 +1,23 @@
 <div class="show-container">
   <% provide(:title, "#{@product.name.downcase} | products") %>
 
-  <h1>
-    <%= @product.name %>
-  </h1>
+  <h1> <%= @product.name %> </h1>
 
   <% if @product.pro %>
-    <span class="label label-default label-pro">
-      PRO
-    </span>
+    <span class="label label-default label-pro">PRO</span>
   <% end %>
-  <% if current_user.admin? %>
+
+  <% if  current_user && current_user.admin? %>
       <%= link_to 'Switch PRO', pro_product_path(@product),
           method: :patch, class: "btn btn-xs btn-default btn-switch" %>
   <% end %>
+
   <p> <%= @product.description %> </p>
-  <p> <%= number_to_currency @product.price %> </p>
+  <p>
+    <%= number_to_currency @product.price %>
+    <%= "at #{@product.shop_name}" if (current_user && !current_user.guest?) %>
+  </p>
   <p> <%= image_tag @product.image, height: "600px" %> </p>
 
-  <p>
-  	<%= link_to 'Back', :back, class: "btn btn-default" %>
-  </p>
+  <p>	<%= link_to 'Back', :back, class: "btn btn-default" %>  </p>
 </div>
