@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   validates :email, format: VALID_EMAIL_REGEX
   validates :email, uniqueness: true
 
-
   has_many :products
+
+  def admin?
+    role == "admin"
+  end
 end

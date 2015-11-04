@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get     'signup'  => 'users#new'
   post    'signup'  => 'users#create'
 
-  resources :products
+  resources :products do
+    patch :pro, to: 'products#pro', on: :member
+    get :pro, to: 'products#show', on: :member
+  end
 
   root 'products#index'
 

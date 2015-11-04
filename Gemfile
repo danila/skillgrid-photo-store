@@ -16,6 +16,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'sorcery'
 gem 'quiet_assets'
+gem 'pundit'
 
 group :test do
 	gem 'minitest-reporters'

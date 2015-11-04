@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :pro]
 
   def index
     @products = Product.all
@@ -36,6 +36,17 @@ class ProductsController < ApplicationController
     @product.destroy
     flash[:success] = 'Product was successfully destroyed'
     redirect_to products_url
+  end
+
+  def pro
+    authorize @product
+
+    @product.toggle(:pro)
+    if @product.save
+      flash[:success] = 'Product was marked as PRO'
+    end
+
+    render :show
   end
 
   private
