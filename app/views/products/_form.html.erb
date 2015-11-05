@@ -1,5 +1,5 @@
 <%= form_for(@product) do |f| %>
-    <%= render 'shared/error_messages', resource: @product %>
+    <%= render 'shared/error_messages', resources: [@product] %>
 
     <%= f.label :name %><br>
     <%= f.text_field :name, class: 'form-control' %>
@@ -11,7 +11,7 @@
     <%= f.text_field :price, class: 'form-control' %>
 
     <%= f.label :image %><br>
-    <%= f.file_field :image %>
+    <%= f.file_field :image, class: 'form-control' %>
 
     <%= f.submit "Create product", class: "btn btn-default" %>
 <% end %>

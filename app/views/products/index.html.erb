@@ -1,5 +1,5 @@
 <% provide(:title, "products") %>
-
+<% if current_user %>
 <h1>Listing Products</h1>
 <table class="table table-hover">
   <thead>
@@ -7,15 +7,24 @@
       <th>Name</th>
       <th>Description</th>
       <th>Price</th>
+      <% unless current_user.guest? %><th>Shop</th> <% end %>
       <th>Image</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @products.each do |product| %>
+    <% policy_scope(@products).each do |product| %>
       <tr>
-        <td><%= link_to product.name, product, class: "product-title"%></td>
+        <td>
+          <%= link_to product.name, product, class: "product-title"%>
+          <% if product.pro %>
+            <h6><span class="label label-default label-pro">PRO</span></h6>
+          <% end %>
+        </td>
         <td><%= product.description %></td>
+        <% unless current_user.guest? %>
+          <td><%= product.shop_name %></td>
+        <% end %>
         <td><%= number_to_currency product.price %></td>
         <td><%= link_to image_tag(product.image.thumb), product %></td>
       </tr>
@@ -25,6 +34,7 @@
 
 <br>
 
-<% if current_user %>
+<% if current_user && current_user.shopkeeper? %>
   <%= link_to 'New Product', new_product_path, class: "btn btn-default"  %>
+<% end %>
 <% end %>

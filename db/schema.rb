@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027085142) do
+ActiveRecord::Schema.define(version: 20151104113504) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.float    "price"
     t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "user_id"
+    t.boolean  "pro",         default: false, null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                     null: false
     t.string   "email",                        null: false
     t.string   "crypted_password",             null: false
     t.string   "salt",                         null: false
@@ -31,10 +32,16 @@ ActiveRecord::Schema.define(version: 20151027085142) do
     t.datetime "updated_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
+    t.string   "role"
+    t.string   "firstname"
+    t.string   "surname"
+    t.string   "userpic"
+    t.string   "passport"
+    t.date     "birthday"
+    t.string   "shopname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

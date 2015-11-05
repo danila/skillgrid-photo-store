@@ -16,6 +16,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'sorcery'
 gem 'quiet_assets'
+gem 'pundit'
 
 group :test do
 	gem 'minitest-reporters'
@@ -29,7 +30,9 @@ group :development do
 end
 
 group :development, :test do
-	gem 'byebug'
-	gem 'pry-rails'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
 end
 
