@@ -2,7 +2,12 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :pro]
 
   def index
-    @products = Product.all
+    @products = policy_scope(Product)
+    unless logged_in?
+      flash.now[:danger] = "Please #{view_context.link_to 'Log In', login_path}
+                        or #{view_context.link_to 'Sign Up', signup_path}
+                        to view the list of products".html_safe
+    end
   end
 
   def new
@@ -24,6 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    authorize @product
     if @product.update(product_params)
       flash[:success] = 'Product was successfully updated'
       redirect_to @product
@@ -34,6 +40,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    authorize @product
     @product.destroy
     flash[:success] = 'Product was successfully destroyed'
     redirect_to products_url

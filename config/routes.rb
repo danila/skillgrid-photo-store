@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :products do
     patch :pro, to: 'products#pro', on: :member
     get :pro, to: 'products#show', on: :member
+    get :pro_products, to: 'products#pro_products', as: :product
   end
 
   root 'products#index'
