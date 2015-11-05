@@ -116,6 +116,7 @@ GEM
       jwt (~> 0.1.4)
       multi_json (~> 1.0)
       rack (~> 1.2)
+    pg (0.18.3)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -215,6 +216,7 @@ DEPENDENCIES
   mini_magick
   minitest-rails
   minitest-reporters
+  pg
   pry
   pry-byebug
   pry-rails
