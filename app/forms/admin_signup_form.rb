@@ -1,5 +1,4 @@
-class AdminSignupForm
-  include ActiveModel::Model
+class AdminSignupForm < SignupForm
 
   validates :password, length: { minimum: 10 }
   validates :firstname, :surname, :userpic, :passport, :birthday, presence: true
@@ -8,19 +7,6 @@ class AdminSignupForm
 
   attr_reader :params
   attr_accessor :user
-
-  def initialize(params = {})
-    @params = params
-    @user = User.new(user_params)
-  end
-
-  def submit
-    if valid? && @user.save
-      @user
-    else
-      false
-    end
-  end
 
   private
     def user_params

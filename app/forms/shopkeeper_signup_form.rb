@@ -1,5 +1,4 @@
-class ShopkeeperSignupForm
-  include ActiveModel::Model
+class ShopkeeperSignupForm < SignupForm
 
   validates :password, length: { minimum: 8 }
   validates :shopname, :userpic, presence: true
@@ -8,19 +7,6 @@ class ShopkeeperSignupForm
 
   attr_reader :params
   attr_accessor :user
-
-  def initialize(params = {})
-    @params = params
-    @user = User.new(user_params)
-  end
-
-  def submit
-    if valid? && @user.save
-      @user
-    else
-      false
-    end
-  end
 
   private
     def user_params
