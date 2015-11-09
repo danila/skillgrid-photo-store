@@ -53,9 +53,9 @@ class ProductsController < ApplicationController
     if @product.save
       flash[:success] = 'Product was marked as PRO'
     end
-
     render :show
   end
+
 
   private
     def set_product

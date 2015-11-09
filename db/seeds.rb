@@ -6,15 +6,31 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
-User.create(email: 'dnlrmkv@gmail.com', password: 'qweqwe',
-            password_confirmation: 'qweqwe', shopname: 'SUPERTELESHOP')
+guest = User.create(email: 'g@g.com',
+                    password: '123456',
+                    password_confirmation: '123456',
+                    role: 'guest')
+
+shopkeeper = User.create(email: 's@s.com',
+                         password: '12345678',
+                         password_confirmation: '12345678',
+                         role: 'shopkeeper',
+                         shopname: 'SUPERTELESHOP')
+
+admin = User.create(email: 'a@a.com',
+                    password: '1234567890',
+                    password_confirmation: '1234567890',
+                    role: 'admin',
+                    firstname: 'Admin',
+                    surname: 'Admin')
 
 
 Product.delete_all
 
 Product.create(name: 'Train platform',
                 description: 'Kraskovo platform, Kazan direction',
-                price: 15, user_id: 1).tap do |p|
+                price: 15, user_id: shopkeeper.id,
+                shopname: shopkeeper.shopname).tap do |p|
 
   p.image = Rails.root.join("app/assets/images/0.jpg").open
   p.save!
@@ -23,7 +39,7 @@ end
 
 Product.create(name: 'White bridge',
                 description: 'Kraskovo village, Moscow region',
-                price:10, user_id: 1).tap do |p|
+                price:10).tap do |p|
 
   p.image = Rails.root.join("app/assets/images/1.jpg").open
   p.save!
@@ -31,7 +47,8 @@ end
 
 Product.create(name: 'Street',
                 description: 'Kraskovo village, Moscow region',
-                price: 15, user_id: 1).tap do |p|
+                price: 15, user_id: shopkeeper.id,
+                shopname: shopkeeper.shopname).tap do |p|
 
   p.image = Rails.root.join("app/assets/images/2.jpg").open
   p.save!
@@ -39,7 +56,8 @@ end
 
 Product.create(name: 'Diod girl',
                 description: 'Muzeon park, Moscow',
-                price: 10, user_id: 1).tap do |p|
+                price: 10, user_id: shopkeeper.id,
+                shopname: shopkeeper.shopname).tap do |p|
 
   p.image = Rails.root.join("app/assets/images/3.jpg").open
   p.save!

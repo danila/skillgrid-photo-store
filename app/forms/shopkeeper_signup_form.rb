@@ -1,7 +1,7 @@
 class ShopkeeperSignupForm < SignupForm
 
   validates :password, length: { minimum: 8 }
-  validates :shopname, :userpic, presence: true
+  validates :shopname, :userpic, presence:, :role true
 
   delegate :email, :password, :role, :shopname, :userpic, to: :user
 

@@ -6,7 +6,6 @@ class Product < ActiveRecord::Base
 	validates :price, numericality: true
 
   def shop_name
-    user = User.find(user_id)
-    user.shopname
+    self.user.shopname
   end
 end

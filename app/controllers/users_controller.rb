@@ -10,8 +10,8 @@ class UsersController < ApplicationController
       auto_login(@user)
       flash[:success] = "You have been successfully signed up"
   		redirect_to root_url
-  	else
+    else
       render :new
-  	end
+    end
   end
 end

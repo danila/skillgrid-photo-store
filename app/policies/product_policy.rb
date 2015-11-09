@@ -21,6 +21,10 @@ class ProductPolicy < ApplicationPolicy
     false
   end
 
+  def show?
+    !user.guest? || record.pro
+  end
+
   class Scope < Scope
     def resolve
       if !user
