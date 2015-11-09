@@ -10,7 +10,7 @@
     <% end %>
 
     <% if  current_user && current_user.admin? %>
-        <%= link_to 'Switch PRO', pro_product_path(@product),
+        <%= link_to 'Switch PRO', pro_product_path,
             method: :patch, class: "btn btn-xs btn-default btn-switch" %>
     <% end %>
     <p/>
@@ -21,6 +21,6 @@
     </p>
     <p> <%= image_tag @product.image, height: "600px" %> </p>
 
-    <p>	<%= link_to 'Back', :back, class: "btn btn-default" %>  </p>
+    <p>	<%= link_to 'Buy', buy_product_path, class: "btn btn-default" %>  </p>
   </div>
 <% end %>

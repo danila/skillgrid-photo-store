@@ -1,9 +1,5 @@
 class ProductPolicy < ApplicationPolicy
 
-  def pro?
-    user.admin?
-  end
-
   def create?
     user.shopkeeper?
   end
@@ -23,6 +19,17 @@ class ProductPolicy < ApplicationPolicy
 
   def show?
     !user.guest? || record.pro
+  end
+
+  def pro?
+    user.admin?
+  end
+
+  def buy?
+    user.guest? &&
+    !record.pro &&
+    !record.shopname.empty? &&
+    !(user.email[-3,3] == 'com')
   end
 
   class Scope < Scope

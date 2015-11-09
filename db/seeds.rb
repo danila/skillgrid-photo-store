@@ -11,6 +11,11 @@ guest = User.create(email: 'g@g.com',
                     password_confirmation: '123456',
                     role: 'guest')
 
+guest1 = User.create(email: 'g@g.ru',
+                    password: '123456',
+                    password_confirmation: '123456',
+                    role: 'guest')
+
 shopkeeper = User.create(email: 's@s.com',
                          password: '12345678',
                          password_confirmation: '12345678',
@@ -66,7 +71,7 @@ end
 
 Product.create(name: 'Rest',
                 description: 'Plaça de l\'Ictineo, Barcelona',
-                price: 15, user_id: 1).tap do |p|
+                price: 15, user_id: shopkeeper.id).tap do |p|
 
   p.image = Rails.root.join("app/assets/images/4.jpg").open
   p.save!
@@ -75,7 +80,7 @@ end
 
 Product.create(name: 'Take a look',
                 description: 'Zhukovskiy, Moscow region',
-                price: 5, user_id: 1).tap do |p|
+                price: 5, user_id: shopkeeper.id).tap do |p|
 
   p.image = Rails.root.join("app/assets/images/5.jpg").open
   p.save!
@@ -84,7 +89,7 @@ end
 
 Product.create(name: 'Traffic',
                 description: 'Zhukovskiy, Moscow region',
-                price: 10, user_id: 1).tap do |p|
+                price: 10, user_id: shopkeeper.id).tap do |p|
 
   p.image = Rails.root.join("app/assets/images/6.jpg").open
   p.save!
@@ -92,7 +97,7 @@ end
 
 Product.create(name: 'Icicles',
                 description: 'Apothecary Garden, Moscow',
-                price: 10, user_id: 1).tap do |p|
+                price: 10, user_id: shopkeeper.id).tap do |p|
 
   p.image = Rails.root.join("app/assets/images/7.jpg").open
   p.save!
@@ -101,7 +106,7 @@ end
 
 Product.create(name: 'The Last of the Mohicans',
                 description: 'Apothecary Garden, Moscow',
-                price: 5, user_id: 1).tap do |p|
+                price: 5, user_id: shopkeeper.id).tap do |p|
 
   p.image = Rails.root.join("app/assets/images/8.jpg").open
   p.save!

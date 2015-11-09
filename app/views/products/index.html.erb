@@ -23,7 +23,7 @@
         </td>
         <td><%= product.description %></td>
         <% unless current_user.guest? %>
-          <td><%= product.shop_name %></td>
+          <td><%= product.shopname %></td>
         <% end %>
         <td><%= number_to_currency product.price %></td>
         <td><%= link_to image_tag(product.image.thumb), product %></td>

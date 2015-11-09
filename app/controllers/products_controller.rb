@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :pro]
+  before_action :set_product,
+                only: [:show, :edit, :update, :destroy, :pro, :buy]
 
   def index
     @products = policy_scope(Product)
@@ -53,9 +54,14 @@ class ProductsController < ApplicationController
     if @product.save
       flash[:success] = 'Product was marked as PRO'
     end
-    render :show
+    redirect_to :product
   end
 
+  def buy
+    authorize @product
+
+    flash.now[:succes] = 'Thank you for purchasing!'
+  end
 
   private
     def set_product
