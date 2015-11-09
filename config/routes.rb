@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     member do
       patch :pro, to: 'products#pro'
       get :pro, to: 'products#show'
-      get :buy, to: 'products#buy'
+      post :buy, to: 'products#buy'
     end
 
     get :pro_products, to: 'products#pro_products', as: :product
