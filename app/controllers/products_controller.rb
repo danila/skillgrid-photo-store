@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     unless logged_in?
       flash.now[:danger] = "Please #{view_context.link_to 'Log In', login_path}
                         or #{view_context.link_to 'Sign Up', signup_path}
-                        to view the list of products".html_safe
+                        to see all products".html_safe
     end
   end
 
@@ -60,7 +60,8 @@ class ProductsController < ApplicationController
   def buy
     authorize @product
 
-    flash.now[:succes] = 'Thank you for purchasing!'
+    flash.now[:success] = 'Thank you for purchasing!'
+    render :show
   end
 
   private

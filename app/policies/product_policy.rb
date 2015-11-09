@@ -1,11 +1,8 @@
 class ProductPolicy < ApplicationPolicy
+  attr_accessor :error_message
 
   def create?
     user.shopkeeper?
-  end
-
-  def index?
-    logged_in?
   end
 
   def update?
@@ -18,7 +15,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def show?
-    !user.guest? || record.pro
+    true
   end
 
   def pro?
@@ -26,18 +23,31 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def buy?
-    user.guest? &&
-    !record.pro &&
-    !record.shopname.empty? &&
-    !(user.email[-3,3] == 'com')
+    if !user
+      @error_message = 'You must be logged in to perform a purchase'
+      return false
+    elsif record.pro
+      @error_message = 'Guests can\'t purchase PRO products'
+      return false
+    elsif !record.shopname
+      @error_message = 'We\'re sorry, but this product doesn\'t
+                        belong to any shop'
+      return false
+    elsif !user.guest?
+      @error_message = 'You must be a guest to perform a purchase'
+      return false
+    elsif (user.email[-3,3] == 'com')
+      @error_message = 'Guests with email in \'.com\' domain
+                        zone can\'t buy products'
+      return false
+    end
+    true
   end
 
   class Scope < Scope
     def resolve
       if !user
-        scope.none
-      elsif user.guest?
-        scope.where(pro: true)
+        scope.where(pro: false)
       else
         scope.all
       end
