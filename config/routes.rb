@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post    'login'   => 'sessions#create'
   get     'signup'  => 'users#new'
   post    'signup'  => 'users#create'
+  get     'users'   => 'users#index'
 
   resources :products do
     member do

@@ -25,8 +25,11 @@
               <li class="userpic">
                 <%= image_tag(current_user.userpic.thumb) %>
               </li>
-          		<li> <%= link_to "log out", logout_path, method: :delete %></li>
-          	<% else %>
+              <% if current_user.admin? %>
+                <li> <%= link_to "users list", users_path %> </li>
+              <% end %>
+              <li> <%= link_to "log out", logout_path, method: :delete %></li>
+            <% else %>
           		<li> <%= link_to "sign up", signup_path %></li>
           		<li> <%= link_to "log in", login_path %></li>
             <% end %>

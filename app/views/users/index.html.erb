@@ -1,0 +1,29 @@
+<% provide(:title, "users") %>
+<h1>Users</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Birthday</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% policy_scope(@users).each do |user| %>
+      <tr>
+        <td>
+          <%= user.email %>
+        </td>
+        <td><%= user.role %></td>
+        <td><%= user.firstname %></td>
+        <td><%= user.surname %></td>
+        <td><%= user.birthday %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
