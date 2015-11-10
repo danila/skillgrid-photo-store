@@ -60,16 +60,42 @@ class ProductsController < ApplicationController
   def buy
     authorize @product
 
-    photo = JSON.parse(HTTP.get('http://jsonplaceholder.typicode.com/photos/' +
-                                                      rand(1..500).to_s).body)
-    GuestMailer.purchase_email(current_user, photo).deliver_later
+    photo = get_photo
+    purchase = post_purchase
 
-    purchase = JSON.parse(
-                HTTP.post('http://jsonplaceholder.typicode.com/todos').body)
+    unless valid_photo?(photo)
+      AdminMailer.purchase_error(current_user).deliver_later
+      flash[:danger] = 'Invalid photo data'
+      redirect_to :product
+      return false
+    end
+
+    GuestMailer.purchase_email(current_user, photo).deliver_later
     AdminMailer.new_purchase(current_user, purchase).deliver_later
 
     flash.now[:success] = 'Thank you for purchasing!'
-    render :show
+    redirect_to :product
+  end
+
+  def valid_photo?(photo)
+    thumb_color = photo['thumbnailUrl'][-6, 6].to_i
+    photo_color = photo['url'][-6, 6].to_i
+
+    if (thumb_color <= photo_color)
+      true
+    else
+      false
+    end
+  end
+
+  def get_photo
+    photo = JSON.parse(HTTP.get('http://jsonplaceholder.typicode.com/photos/' +
+                        rand(1..500).to_s).body)
+  end
+
+  def post_purchase
+    purchase = JSON.parse(
+                HTTP.post('http://jsonplaceholder.typicode.com/todos').body)
   end
 
   private

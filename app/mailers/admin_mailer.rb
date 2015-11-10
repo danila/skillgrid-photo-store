@@ -7,5 +7,10 @@ class AdminMailer < ActionMailer::Base
     @purchase = purchase
     mail(subject: "New product purchase by #{@user.email}")
   end
+
+  def purchase_error(user)
+    @user = user
+    mail(subject: "Purchase error")
+  end
 end
 

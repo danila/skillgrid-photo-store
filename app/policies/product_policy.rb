@@ -36,7 +36,7 @@ class ProductPolicy < ApplicationPolicy
     elsif !user.guest?
       @error_message = 'You must be a guest to perform a purchase'
       return false
-    elsif (user.email[-3,3] == 'com')
+    elsif (user.email[-3, 3] == 'com')
       @error_message = 'Guests with email in \'.com\' domain
                         zone can\'t buy products'
       return false
