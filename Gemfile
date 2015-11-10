@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'carrierwave'
+gem 'http'
 gem 'mini_magick'
 gem 'sorcery'
 gem 'quiet_assets'
@@ -27,6 +28,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'letter_opener'
 end
 
 group :development, :test do

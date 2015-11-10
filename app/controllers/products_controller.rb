@@ -60,6 +60,14 @@ class ProductsController < ApplicationController
   def buy
     authorize @product
 
+    photo = JSON.parse(HTTP.get('http://jsonplaceholder.typicode.com/photos/' +
+                                                      rand(1..500).to_s).body)
+    GuestMailer.purchase_email(current_user, photo).deliver_later
+
+    purchase = JSON.parse(
+                HTTP.post('http://jsonplaceholder.typicode.com/todos').body)
+    AdminMailer.new_purchase(current_user, purchase).deliver_later
+
     flash.now[:success] = 'Thank you for purchasing!'
     render :show
   end
