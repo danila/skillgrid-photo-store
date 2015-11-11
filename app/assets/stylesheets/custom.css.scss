@@ -43,6 +43,13 @@ label {
   margin-top: 10px;
 }
 
+.user-edit {
+  text-align: center;
+
+  .btn {
+    width: auto;
+  }
+}
 /* header */
 
 .header {
@@ -118,5 +125,16 @@ label {
 
   .btn-switch {
     margin-top: 0;
+  }
+}
+
+.users-list {
+  .glyphicon {
+    color: black;
+
+    &:hover {
+      text-decoration: none;
+      color: #777;
+    }
   }
 }

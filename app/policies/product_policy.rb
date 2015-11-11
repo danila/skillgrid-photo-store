@@ -6,8 +6,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    # user.shopkeeper? && (user.id == product.user_id)
-    false
+    user.admin? || user.shopkeeper? && (user.id == product.user_id) || 'You are not allowed to perform this action'
   end
 
   def destroy?

@@ -9,14 +9,15 @@ Rails.application.routes.draw do
 
   resources :products do
     member do
-      patch :pro, to: 'products#pro'
-      get :pro, to: 'products#show'
-      post :buy, to: 'products#buy'
+      patch :pro,   to: 'products#pro'
+      get   :pro,   to: 'products#show'
+      post  :buy,   to: 'products#buy'
     end
 
     get :pro_products, to: 'products#pro_products', as: :product
   end
 
+  resources :users, only: [:edit, :show, :update]
   root 'products#index'
 
   # Example of regular route:
