@@ -5,9 +5,6 @@ class AdminSignupForm < SignupForm
 
   delegate :email, :password, :role, :firstname, :surname, :userpic, :passport, :birthday, to: :user
 
-  attr_reader :params
-  attr_accessor :user
-
   private
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation,

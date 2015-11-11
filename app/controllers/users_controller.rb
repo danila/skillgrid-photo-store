@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    authorize User
+
     @signup_form = SignupFormFinder.new(params).form
     @user = @signup_form.user
     if @signup_form.submit

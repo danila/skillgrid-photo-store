@@ -6,6 +6,11 @@ class UserPolicy < ApplicationPolicy
     user && user.admin?
   end
 
+  def create?
+    @error_message = 'You already have an account'
+    !user
+  end
+
   def edit?
     @error_message = 'You must be logged in to view this page'
     user && user.admin?
