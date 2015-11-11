@@ -6,23 +6,23 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
-guest = User.create(email: 'g@g.com',
+guest = User.create(email: 'guest@gmail.com',
                     password: '123456',
                     password_confirmation: '123456',
                     role: 'guest')
 
-guest1 = User.create(email: 'g@g.ru',
+guest1 = User.create(email: 'guest@gmail.ru',
                     password: '123456',
                     password_confirmation: '123456',
                     role: 'guest')
 
-shopkeeper = User.create(email: 's@s.com',
+shopkeeper = User.create(email: 'shopkeeper@gmail.com',
                          password: '12345678',
                          password_confirmation: '12345678',
                          role: 'shopkeeper',
                          shopname: 'SUPERTELESHOP')
 
-admin = User.create(email: 'a@a.com',
+admin = User.create(email: 'admin@gmail.com',
                     password: '1234567890',
                     password_confirmation: '1234567890',
                     role: 'admin',

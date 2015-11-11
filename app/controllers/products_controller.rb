@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
   def buy
     authorize @product
 
-    success = Purchasing.purchase_photo(current_user)
+    success = Purchasing.new(current_user).proceed
     if success
       flash[:success] = 'Thank you for purchasing!'
     else

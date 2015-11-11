@@ -4,13 +4,13 @@
 
   <h1>User edit</h1>
 
-  <%= form_for(@user)  do |u| %>
-    <%= u.label(:role_guest, "Guest") %>
-    <%= u.radio_button(:role, "guest") %>
-    <%= u.label(:role_shopkeeper, "Shopkeeper") %>
-    <%= u.radio_button(:role, "shopkeeper") %>
-    <%= u.label(:role_admin, "Admin") %>
-    <%= u.radio_button(:role, "admin") %>
+  <%= form_for(@user)  do |f| %>
+    <%= f.label(:role_guest, "Guest") %>
+    <%= f.radio_button(:role, "guest") %>
+    <%= f.label(:role_shopkeeper, "Shopkeeper") %>
+    <%= f.radio_button(:role, "shopkeeper") %>
+    <%= f.label(:role_admin, "Admin") %>
+    <%= f.radio_button(:role, "admin") %>
 
     <%= u.submit "Update user", class: "btn btn-default" %>
   <% end %>

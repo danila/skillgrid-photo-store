@@ -1,7 +1,7 @@
 class PostPurchaseWorker
   include Sidekiq::Worker
 
-  def perform(post_url, user_id)
+  def perform(user_id)
     user = User.find(user_id)
     purchase = JSON.parse(
                 HTTP.post('http://jsonplaceholder.typicode.com/todos').body)
