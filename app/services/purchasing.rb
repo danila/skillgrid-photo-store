@@ -1,33 +1,33 @@
-module Purchasing
-  module_function
+class Purchasing
 
-  def purchase_photo(user)
-    photo = get_photo
-    valid_photo = valid_photo?(photo)
-    if valid_photo
-      purchase = post_purchase
-      GuestMailer.purchase_email(user, photo).deliver_later
-      AdminMailer.new_purchase(user, purchase).deliver_later
+  def new(user)
+    @user = user
+    @photo_url = "http://jsonplaceholder.typicode.com/photos/#{rand(1..500)}"
+  end
+
+  def proceed
+    if can_purchase?
+      GuestMailer.purchase_email(@user, photo).deliver_later
+
+      post_url = 'http://jsonplaceholder.typicode.com/todos'
+      PostPurchaseWorker.perform_async(post_url, @user.id)
     else
-      AdminMailer.purchase_error(user).deliver_later
-      false
+      AdminMailer.purchase_error(@user).deliver_later
+      return false
     end
   end
 
-  def valid_photo?(photo)
-    thumb_color = photo['thumbnailUrl'][-6, 6].to_i
-    photo_color = photo['url'][-6, 6].to_i
+  private
+    def can_purchase?
+      photo = JSON.parse(HTTP.get(@photo_url).body)
 
-    thumb_color <= photo_color
-  end
+      valid_photo?(photo)
+    end
 
-  def get_photo
-    JSON.parse(
-      HTTP.get("http://jsonplaceholder.typicode.com/photos/#{rand(1..500)}").body)
-  end
+    def valid_photo?(photo)
+      thumb_color = photo['thumbnailUrl'].last(6)
+      photo_color = photo['url'].last(6)
 
-  def post_purchase
-    JSON.parse(HTTP.post('http://jsonplaceholder.typicode.com/todos').body)
-  end
-
+      thumb_color <= photo_color
+    end
 end
