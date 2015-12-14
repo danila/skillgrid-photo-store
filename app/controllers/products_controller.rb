@@ -16,9 +16,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.build(product_params)
+    @product.shopname = current_user.shopname
     authorize @product
-    @product.user_id = current_user.id if current_user
 
     if @product.save
       flash[:success] = 'Product was successfully created'

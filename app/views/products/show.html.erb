@@ -17,7 +17,7 @@
     <p> <%= @product.description %> </p>
     <p>
       <%= number_to_currency @product.price %>
-      <%= "at #{@product.shop_name}" if (current_user && !current_user.guest?) %>
+      <%= "at #{@product.shopname}" if (current_user && !current_user.guest?) %>
     </p>
     <p> <%= image_tag @product.image, height: "600px" %> </p>
 

@@ -5,8 +5,8 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <% if current_user && !current_user.guest? %><th>Shop</th> <% end %>
       <th>Price</th>
-      <% if current_user && current_user.guest? %><th>Shop</th> <% end %>
       <th>Image</th>
     </tr>
   </thead>
@@ -21,7 +21,7 @@
           <% end %>
         </td>
         <td><%= product.description %></td>
-        <% if current_user && current_user.guest? %>
+        <% if current_user && !current_user.guest? %>
           <td><%= product.shopname %></td>
         <% end %>
         <td><%= number_to_currency product.price %></td>
