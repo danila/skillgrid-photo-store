@@ -1,5 +1,7 @@
 class GuestMailer < ActionMailer::Base
-  default from: "purchase@skillgrid-store.com"
+  default from: "purchase@skillgrid-store.com",
+          template_path: "mailers/guest_mailer"
+
 
   def purchase_email(user, photo)
     @user = user

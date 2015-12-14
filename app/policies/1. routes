@@ -1,0 +1,29 @@
+1. routes
+ resources :admins
+ resources :guests
+ resources :shop_owners
+ resources :users
+
+2. одинарные ковычки внутри одинарных
+https://github.com/Strongelhold/test_shop/blob/refactoring/app/policies/product_policy.rb
+
+
+3., :on => :create почему?
+https://github.com/Strongelhold/test_shop/blob/refactoring/app/models/admin.rb
+
+
+4. можно было через self
+https://github.com/Strongelhold/test_shop/tree/refactoring/app/services
+
+5. почему тут пути
+https://github.com/Strongelhold/test_shop/tree/refactoring/app/services
+
+
+
+
+разобраться с аксессорами
+
+папка для мейлеров
+
+product_controller -> build product on create
+
