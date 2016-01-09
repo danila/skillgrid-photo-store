@@ -21,7 +21,7 @@
     </p>
     <p> <%= image_tag @product.image, height: "600px" %> </p>
 
-    <% if current_user.guest? %>
+    <% if current_user && current_user.guest? %>
       <p> <%= link_to 'Buy', buy_product_path,
             method: :post, class: "btn btn-default" %> </p>
     <% end %>
